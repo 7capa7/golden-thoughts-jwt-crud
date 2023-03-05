@@ -1,0 +1,10 @@
+tabela user jest zablokowana w postgres - taka juz jest
+implements UserDetails pozwala uzyc paru metod np isAccountNonLocked
+
+UserDetails w Spring Security to interfejs, który reprezentuje szczegóły użytkownika. Służy on do przechowywania informacji o użytkowniku, takich jak nazwa użytkownika, hasło, role użytkownika, uprawnienia itp. UserDetails jest używany przez mechanizmy Spring Security do uwierzytelniania użytkowników i kontrolowania dostępu do zasobów.
+
+Klasa, która implementuje interfejs UserDetails, zawiera informacje o użytkowniku, takie jak jego nazwę, hasło i role. Można utworzyć niestandardową implementację UserDetails, która zawiera dodatkowe informacje o użytkowniku.
+
+Przykładowo, jeśli chcemy przechowywać informacje o użytkowniku, takie jak adres e-mail, datę rejestracji, numer telefonu itp., możemy utworzyć niestandardową implementację UserDetails, która będzie zawierała te informacje.
+
+W Spring Security, UserDetails jest wykorzystywany wraz z interfejsem UserDetailsService, który służy do ładowania szczegółów użytkownika z różnych źródeł, takich jak baza danych, pliki konfiguracyjne itp.

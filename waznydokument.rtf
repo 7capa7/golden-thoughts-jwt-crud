@@ -1,0 +1,136 @@
+{\rtf1\ansi\ansicpg1250\deff0\nouicompat\deflang1045{\fonttbl{\f0\fnil\fcharset238 Arial;}{\f1\fnil\fcharset0 Arial;}{\f2\fmodern JetBrains Mono;}{\f3\fmodern\fcharset238 JetBrains Mono;}{\f4\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue255;\red97\green175\blue239;\red224\green108\blue117;\red229\green192\blue123;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1 {\f0\fs22\lang21{\field{\*\fldinst{HYPERLINK https://www.figma.com/file/H58LxB1rwqaD1lh2r9ZFET/jwtthoughts?t=zz7zjEBUJU7rJbqc-1 }}{\fldrslt{https://www.figma.com/file/H58LxB1rwqaD1lh2r9ZFET/jwtthoughts?t=zz7zjEBUJU7rJbqc-1\ul0\cf0}}}}\f1\fs22\lang1045\par
+\f0 zaleznosci\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\fs20 postgresql\par
+{\pntext\f4\'B7\tab}lombok\par
+{\pntext\f4\'B7\tab}\lang21 jjwt-api\par
+{\pntext\f4\'B7\tab}jjwt-impl\par
+{\pntext\f4\'B7\tab}j\lang1045 j\lang21 wt-jackson\par
+{\pntext\f4\'B7\tab}\lang1045 spring web\par
+{\pntext\f4\'B7\tab}spring security\par
+{\pntext\f4\'B7\tab}spring data jpa\lang21\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\par
+DZIEKI ADNOTACJA LOMBOKA DOSTAJE KONSTRUKTORY I ZASTEPUJE @AUTOWIRED \par
+@Data to adnotacja w bibliotece Lombok dla j\'eazyka Java, kt\f1\lang1033\'f3ra automatycznie generuje metody dost\f0\'eapowe (gettery i settery), metod\'ea equals(), metod\'ea hashCode() i metod\'ea toString()\lang21\par
+\par
+\par
+\lang1045 @BEAN\par
+\f2 SecurityFilterChain securityFilterChain\par
+SecurityFilterChain to interfejs w j\f0\'ea\f1\lang1033 zyku Java, kt\'f3ry jest cz\f0\'ea\'9cci\'b9 modu\'b3u Spring Security. SecurityFilterChain definiuje \'b3a\'f1cuch filtr\f1\'f3w zabezpiecze\f0\'f1, kt\f1\'f3re s\f0\'b9 wykonywane dla \'bf\'b9da\'f1 HTTP w aplikacji webowej.\par
+ustawia ze przez defaultowimi springowymi sprawdzaniami na sie wywoal jwtAuthFiler oraz usawia auth providera\par
+\par
+@BEAN\par
+\f2 UserDetailsService userDetailsService\cf2\par
+\cf0\f3\lang1045 W implementacji UserDetailsService mo\f0\'bf\f1\lang1033 na uzyska\f0\'e6 dost\'eap do \'9fr\f1\'f3d\f0\'b3a danych u\'bfytkownika, takiego jak baza danych lub repozytorium, i zwr\f1\'f3ci\f0\'e6 odpowiedni obiekt UserDetails. Mo\'bfliwe jest r\f1\'f3wnie\f0\'bf dodanie dodatkowych informacji o u\'bfytkowniku do UserDetails, takich jak adres e-mail lub numer telefonu.\par
+\par
+Podsumowuj\'b9c, UserDetailsService dostarcza informacji na temat u\'bfytkownika potrzebnych do autentykacji i autoryzacji w aplikacji zabezpieczonej Spring Security.\par
+\par
+w userdetails i userdetailsservice username jest emailem bo spring chce username do autentykacji a ja mam email\par
+\par
+@BEAN\par
+\lang1045 a\f2\lang1033 uthenticationProvider authenticationProvider\par
+AuthenticationProvider to interfejs w j\f0\'ea\f1 zyku Java, kt\'f3ry jest cz\f0\'ea\'9cci\'b9 modu\'b3u Spring Security. AuthenticationProvider definiuje metod\'ea authenticate(), kt\f1\'f3ra s\f0\'b3u\'bfy do uwierzytelniania \'bf\'b9da\'f1 HTTP na podstawie dostarczonych informacji uwierzytelniaj\'b9cych.\par
+\par
+W kontek\'9ccie Spring Security, AuthenticationProvider jest u\'bfywany przez mechanizm autentykacji, aby uwierzytelni\'e6 u\'bfytkownika i zwr\f1\'f3ci\f0\'e6 obiekt Authentication, kt\f1\'f3ry reprezentuje po\f0\'9cwiadczenia u\'bfytkownika. Obiekt Authentication zawiera informacje o u\'bfytkowniku, takie jak jego nazwa i has\'b3o, oraz list\'ea jego uprawnie\'f1.\par
+Spring Security udost\'eapnia kilka gotowych implementacji AuthenticationProvider, takich jak DaoAuthenticationProvider, kt\f1\'f3ry u\f0\'bfywa obiektu UserDetailsService do uzyskania informacji o u\'bfytkowniku\f2\par
+\f0\lang1045 @BEAN\par
+authenticationManager\f2\par
+\f0\lang1033 AuthenticationManager jest interfejsem Spring Security, kt\f1\'f3ry definiuje metod\f0\'ea authenticate(), kt\f1\'f3ra s\f0\'b3u\'bfy do uwierzytelniania u\'bfytkownika. Metoda ta przyjmuje obiekt Authentication ktory zwraca auth provivder zawieraj\'b9cy dane uwierzytelniaj\'b9ce u\'bfytkownika (takie jak nazwa u\'bfytkownika i has\'b3o) i zwraca obiekt Authentication reprezentuj\'b9cy uwierzytelnionego u\'bfytkownika lub zg\'b3asza wyj\'b9tek w przypadku niepowodzenia uwierzytelniania.\par
+\par
+W tym kodzie u\'bfywana jest klasa AuthenticationConfiguration, kt\f1\'f3ra jest konfiguracj\f0\'b9 dla procesu uwierzytelniania w Spring Security. Metoda getAuthenticationManager() zwraca skonfigurowany obiekt AuthenticationManager. Ta metoda jest wywo\'b3ywana w metodzie authenticationManager() definiuj\'b9cej beana AuthenticationManager.\par
+\par
+Ostatecznie, zdefiniowany bean AuthenticationManager mo\'bfe zosta\'e6 u\'bfyty w aplikacji jako zale\'bfno\'9c\'e6 wstrzykiwana do innych klas, kt\f1\'f3re potrzebuj\f0\'b9 autentykacji u\'bfytkownika. Na przyk\'b3ad, AuthenticationManager mo\'bfe by\'e6 wstrzykiwany do WebSecurityConfigurerAdapter, kt\f1\'f3ry definiuje zabezpieczenia dla aplikacji webowej.\f2\lang1045\par
+\par
+\f0 @BEAN password encoder zwraca bcyrp encoder\f2\par
+\f0\lang21\par
+\lang1045\par
+AUTH\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 AuthenticationController\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\par
+\tab jest to kontroler ktory obsluguje register i authenticate wywoluje dzialania na \tab\cf3\f2 authenticationService\f0  i zwraca status ok 200 a jesli cos nie dziala to blad jest\f2\par
+\cf0\f0  \par
+\tab\tab\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 AuthenticationService\par
+
+\pard\box\brdrdash\brdrw0 \li720\sa200\sl276\slmult1 register(RegisterRequest registerRequest) - tworzy nowego u\'bfytkownika na podstawie danych przekazanych w obiekcie RegisterRequest. W celu zabezpieczenia has\'b3a, u\'bfywa PasswordEncoder do jego zaszyfrowania. Po zapisaniu u\'bfytkownika do bazy danych, generuje token JWT (JSON Web Token) za pomoc\'b9 JwtService i zwraca informacj\'ea o zarejestrowaniu u\'bfytkownika.\par
+\par
+authenticate(AuthenticationRequest authenticationRequest) - uwierzytelnia u\'bfytkownika na podstawie przes\'b3anych danych uwierzytelniaj\'b9cych (adres e-mail i has\'b3o). Wykorzystuje AuthenticationManager do weryfikacji danych uwierzytelniaj\'b9cych. Je\'9cli uwierzytelnienie si\'ea powiedzie, generuje token JWT za pomoc\'b9 JwtService i zwraca go w obiekcie AuthenticationResponse. Je\'9cli u\'bfytkownik o podanym adresie e-mail nie istnieje, rzuca wyj\'b9tek UsernameNotFoundException.\par
+Funkcja authenticationManager.authenticate przeprowadza proces uwierzytelniania u\'bfytkownika na podstawie podanych danych uwierzytelniaj\'b9cych, czyli adresu e-mail i has\'b3a. Funkcja ta u\'bfywa klas implementuj\'b9cych interfejs UserDetails do wyszukiwania u\'bfytkownika i por\f1\lang1033\'f3wnywania has\f0\'b3a z zapisanym w systemie. Je\'9cli uwierzytelnianie przebiega pomy\'9clnie, funkcja zwraca obiekt klasy Authentication, kt\f1\'f3ry reprezentuje zalogowanego u\f0\'bfytkownika. W przypadku niepowodzenia uwierzytelnienia, funkcja zwraca wyj\'b9tek AuthenticationException.\tab   aplication manager jest zdefiniowany jako bean w applicationConfiguration\lang1045\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\tab\tab\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 AuthenticationRequest\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\tab definiuje jak powinnien wygladac pola w zapytaniu autentykacyjnym\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 AuthenticationResponse\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\tab definuje jak powinny wygladac pola w odpowiedzi autentykacyjnej\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 RegistserRequest\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\tab Definiuje to jakie powinny byc pola w zapytaniu registerowym\par
+\par
+CONFIG\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 application config\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1 W skr\f1\lang1033\'f3cie, klasa ApplicationConfig zawiera konfiguracj\f0\'ea Spring Security, kt\f1\'f3ra definiuje spos\'f3b, w jaki aplikacja uwierzytelnia u\f0\'bfytkownik\f1\'f3w i szyfruje ich has\f0\'b3a. Metoda userDetailsService() zwraca obiekt UserDetailsService, kt\f1\'f3ry jest odpowiedzialny za pobieranie szczeg\'f3\f0\'b3\f1\'f3w u\f0\'bfytkownika z bazy danych, a metoda authenticationProvider() zwraca obiekt AuthenticationProvider, kt\f1\'f3ry definiuje spos\'f3b przetwarzania \f0\'bf\'b9da\'f1 uwierzytelniania. Metoda authenticationManager() zwraca obiekt AuthenticationManager, kt\f1\'f3ry udost\f0\'eapnia mechanizm uwierzytelniania w aplikacji, a metoda passwordEncoder() zwraca obiekt PasswordEncoder, kt\f1\'f3ry definiuje spos\'f3b szyfrowania hase\f0\'b3 u\'bfytkownik\f1\'f3w.\f0\lang1045\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 jwtAuthFilter \par
+
+\pard\box\brdrdash\brdrw0 \fi-360\li720\sa200\sl276\slmult1\cf4\f2 OncePerRequestFilter\f0  \cf0 dzieki temu ze klasa to rozszczerza wykonuje sie raz na poczatku kazdego requesta @overriduje do internalfilter dzieki czemu wykonuj glowny filter Je\'9cli JWT jest obecny, to filtr wyodr\'eabnia z niego adres email u\'bfytkownika i przekazuje go do JwtService, kt\f1\lang1033\'f3ry weryfikuje, czy token jest wa\f0\'bfny i nie wygas\'b3. Je\'9cli weryfikacja przebiegnie pomy\'9clnie, to filtrowanie pobiera szczeg\f1\'f3\f0\'b3y u\'bfytkownika poprzez interfejs UserDetailsService, a nast\'eapnie u\'bfywa tych szczeg\f1\'f3\f0\'b3\f1\'f3w, aby utworzy\f0\'e6 obiekt UsernamePasswordAuthenticationToken i ustawi\'e6 go jako autoryzacj\'ea w kontek\'9ccie zabezpiecze\'f1 Spring Security (SecurityContextHolder). Na koniec, \'bf\'b9danie jest przekazywane do kolejnego filtra w \'b3a\'f1cuchu filtr\f1\'f3w.\f0\lang1045\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 JwtService\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\tab  implementuje funkcjonalno\'9c\'e6 tworzenia i weryfikacji token\f1\lang1033\'f3w JWT\par
+\f0\lang1045\tab\f1\lang1033 Metoda extractUserEmail wyci\f0\'b9ga z tokenu adres email u\'bfytkownika.\par
+\par
+\tab Metoda extractClaim wyci\'b9ga z tokenu wybrany claim (informacj\'ea) za pomoc\'b9 \tab przekazanej funkcji.\par
+\par
+\tab Metoda generateToken tworzy nowy token JWT z danymi u\'bfytkownika oraz \tab opcjonalnymi dodatkowymi claimami.\par
+\par
+\tab Metoda isTokenValid weryfikuje, czy podany token jest wa\'bfny (nie wygas\'b3 i jest \tab przypisany do u\'bfytkownika o podanym adresie email).\par
+\par
+\tab Pozosta\'b3e metody s\'b3u\'bf\'b9 do wyci\'b9gania informacji z token\f1\'f3w JWT (np. czasu \f0\lang1045\tab\f1\lang1033 wyga\f0\'9cni\'eacia) oraz tworzenia klucza do podpisywania token\f1\'f3w.\par
+\par
+\f0\lang1045\tab\f1\lang1033 Metoda extractAllClaims() z klasy JwtService parsuje JWT (JSON Web Token) i \f0\lang1045\tab\f1\lang1033 zwraca jego zawarto\f0\'9c\'e6 jako obiekt typu Claims, kt\f1\'f3ry zawiera pary klucz-warto\f0\'9c\'e6 \tab (ang. key-value pairs) reprezentuj\'b9ce dane u\'bfytkownika zawarte w tokenie JWT\par
+\par
+\lang1045\tab\f2\lang1033 generateToken\f0\lang1045  przyjmuje user details i uzywa dalej funkcji generate token ktory \tab przyjmuje hash mape dlatego ze claimsy to hashmapa i user details\cf2\f2\lang1033\par
+\cf0\f0\lang1045\par
+\tab\tab\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 SecurityCOnfiguration\par
+
+\pard\box\brdrdash\brdrw0 \li720\sa200\sl276\slmult1 Ten kod jest plikiem konfiguracyjnym Spring Security, kt\f1\lang1033\'f3ry definiuje ustawienia zabezpiecze\f0\'f1 dla aplikacji.\par
+Zawiera on definicj\'ea SecurityFilterChain - \'b3a\'f1cucha filtr\f1\'f3w bezpiecze\f0\'f1stwa, kt\f1\'f3ry jest u\f0\'bfywany do przetwarzania \'bf\'b9da\'f1 HTTP.\par
+Konfiguracja obejmuje:\par
+Wy\'b3\'b9czenie CSRF - mechanizmu zabezpiecze\'f1 przed atakami typu CSRF (Cross-Site Request Forgery).\par
+Definiowanie, kt\f1\'f3re \f0\'bf\'b9dania HTTP wymagaj\'b9 uwierzytelnienia - tutaj \'bf\'b9dania pod adresem "/api/auth/**" s\'b9 bezwarunkowo autoryzowane, natomiast dla innych wymagane jest uwierzytelnienie.\par
+Konfiguracja zarz\'b9dzania sesjami - wy\'b3\'b9czenie mechanizmu zarz\'b9dzania sesjami i ustawienie typu tworzonej sesji na STATELESS, co oznacza, \'bfe dla ka\'bfdego \'bf\'b9dania tworzona jest nowa sesja.\par
+Dodanie filtra uwierzytelniaj\'b9cego JwtAuthFilter przed domy\'9clnym filtrem uwierzytelniania Spring Security.\par
+Ostatecznie, ta konfiguracja definiuje \'b3a\'f1cuch filtrowania, kt\f1\'f3ry okre\f0\'9cla, jak Spring Security ma przetwarza\'e6 \'bf\'b9dania HTTP w aplikacji i jakie zabezpieczenia maj\'b9 by\'e6 zastosowane.\lang1045\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\par
+USER\tab\par
+
+\pard\box\brdrdash\brdrw0 {\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 USER - adnotacja _user bo nazwa tabeli user jest zastrzezona implementuje UserDetails ze spring security @override wszystkie metody interfejsu userdetails ktore pozwalacja poprawnie dzialac spring security\par
+{\pntext\f4\'B7\tab}ROLE - enum roli\cf4\par
+{\pntext\f4\'B7\tab}\cf0 USERrepository - interface rozszerza JpaRepository<Tabela,Typ Klucza> dzieki ktoremu ma podstawowe operacje crud uzywam finbyemail bo jest potrzebne do jwt\par
+
+\pard\box\brdrdash\brdrw0 \sa200\sl276\slmult1\par
+\par
+MYCONTROLLER\par
+////////\lang21\par
+\f1\fs22\par
+
+\pard\sa200\sl276\slmult1\par
+}
+ 
